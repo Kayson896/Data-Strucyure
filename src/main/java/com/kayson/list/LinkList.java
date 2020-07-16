@@ -88,4 +88,55 @@ public class LinkList<T> {
             return num;
         }
     }
+    public T value(int pos){
+        if (isEmpty()){
+            System.out.println("error:empty.");
+            return null;
+        }else {
+            if (pos<1||pos>length){
+                System.out.println("error:wrong pos.");
+                return null;
+            }
+            int num = 1;
+            Node<T> q = head.next;
+            while (num<pos){
+                q = q.next;
+                num++;
+            }
+            return q.data;
+        }
+    }
+    public boolean modify(T obj,int pos){
+        if (isEmpty()){
+            System.out.println("error:empty.");
+            return false;
+        }else {
+            if (pos<1||pos>length){
+                System.out.println("error:wrong pos.");
+                return false;
+            }
+            int num = 1;
+            Node<T> q = head.next;
+            while (num<pos){
+                q = q.next;
+                num++;
+            }
+            q.data = obj;
+            return true;
+        }
+    }
+    public int size(){
+        return length;
+    }
+    public void nextOrder(){
+        Node<T> q = head.next;
+        while (q!=null){
+            System.out.println(q.data);
+            q = q.next;
+        }
+    }
+    public void clear(){
+        length = 0;
+        head.next = null;
+    }
 }
